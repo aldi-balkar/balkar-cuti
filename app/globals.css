@@ -2,17 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-
 :root {
   --background: #fff;
   --foreground: #1a1a1a;
+  --primary: #1e3a8a;
+  --primary-hover: #1e40af;
+  --secondary: #3b82f6;
+  --accent: #06b6d4;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
@@ -25,5 +29,156 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  
+  /* Animation utilities */
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+}
+
+@layer components {
+  /* Primary CTA Button - Bold & Attention-grabbing */
+  .btn-cta-primary {
+    @apply relative px-8 py-4 md:px-10 md:py-5 
+           bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 
+           text-white font-extrabold text-base md:text-lg lg:text-xl
+           rounded-2xl shadow-2xl 
+           border-4 border-green-600
+           transition-all duration-300 
+           transform hover:scale-105 hover:shadow-green-500/50 
+           active:scale-95
+           focus:outline-none focus:ring-4 focus:ring-green-400
+           overflow-hidden;
+  }
+  
+  .btn-cta-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-white/20 
+           transform -skew-x-12 -translate-x-full 
+           transition-transform duration-700;
+  }
+  
+  .btn-cta-primary:hover::before {
+    @apply translate-x-full;
+  }
+  
+  /* Secondary CTA Button */
+  .btn-cta-secondary {
+    @apply px-6 py-3 md:px-8 md:py-4
+           bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500
+           text-white font-bold text-sm md:text-base lg:text-lg
+           rounded-xl shadow-xl
+           border-3 border-blue-600
+           transition-all duration-300
+           transform hover:scale-105 hover:shadow-blue-500/50
+           active:scale-95
+           focus:outline-none focus:ring-4 focus:ring-blue-400;
+  }
+  
+  /* Outline CTA Button */
+  .btn-cta-outline {
+    @apply px-6 py-3 md:px-8 md:py-4
+           bg-white/90 backdrop-blur-sm
+           text-blue-700 font-bold text-sm md:text-base
+           rounded-xl shadow-lg
+           border-4 border-blue-500
+           transition-all duration-300
+           transform hover:scale-105 hover:bg-blue-50 hover:border-blue-600
+           active:scale-95
+           focus:outline-none focus:ring-4 focus:ring-blue-300;
+  }
+  
+  /* Pulse animation for urgent CTAs */
+  .btn-pulse {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-ring {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+    }
+  }
+  
+  /* Shimmer effect for special CTAs */
+  .btn-shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-shimmer::after {
+    content: '';
+    @apply absolute inset-0 
+           bg-gradient-to-r from-transparent via-white/30 to-transparent
+           transform translate-x-[-200%]
+           transition-transform duration-1000;
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 
+           hover:shadow-2xl hover:-translate-y-1;
+  }
+  
+  /* Responsive container */
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Smooth scroll */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Better touch targets for mobile */
+@media (pointer: coarse) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
