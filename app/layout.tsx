@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cuti-worth-it.vercel.app'),
+  metadataBase: new URL('https://cuti.gagitualdi.online'),
   title: {
     default: 'Strategi Cuti Cerdas - Planning Liburan yang Tepat',
     template: '%s | Strategi Cuti Cerdas',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: 'https://cuti-worth-it.vercel.app',
+    url: 'https://cuti.gagitualdi.online',
     title: 'Strategi Cuti Cerdas - Planning Liburan yang Tepat',
     description: 'Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat berdasarkan libur nasional Indonesia.',
     siteName: 'Strategi Cuti Cerdas',
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     images: ['/opengraph-image'],
   },
   alternates: {
-    canonical: 'https://cuti-worth-it.vercel.app',
+    canonical: 'https://cuti.gagitualdi.online',
   },
   category: 'lifestyle',
 }

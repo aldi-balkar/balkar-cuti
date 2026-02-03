@@ -40,7 +40,7 @@ export default function Home() {
     '@type': 'WebApplication',
     name: 'Strategi Cuti Cerdas',
     description: 'Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat berdasarkan libur nasional Indonesia.',
-    url: 'https://cuti-worth-it.vercel.app',
+    url: 'https://cuti.gagitualdi.online',
     applicationCategory: 'LifestyleApplication',
     operatingSystem: 'Any',
     offers: {
@@ -185,7 +185,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center pt-3">
               <button 
                 onClick={() => {
-                  const text = `Nemu tool keren buat strategi cuti! Bisa tau kapan waktu terbaik ambil cuti biar dapet long weekend panjang.\n\nCek di: ${globalThis.location?.href || 'https://cuti-worth-it.vercel.app'}`;
+                  const text = `Nemu tool keren buat strategi cuti! Bisa tau kapan waktu terbaik ambil cuti biar dapet long weekend panjang.\n\nCek di: ${globalThis.location?.href || 'https://cuti.gagitualdi.online'}`;
                   globalThis.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
                 }}
                 className="px-8 py-4 bg-white text-green-600 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 text-base md:text-lg"
@@ -194,7 +194,7 @@ export default function Home() {
               </button>
               <button 
                 onClick={() => {
-                  navigator.clipboard.writeText(globalThis.location?.href || 'https://cuti-worth-it.vercel.app');
+                  navigator.clipboard.writeText(globalThis.location?.href || 'https://cuti.gagitualdi.online');
                   alert('✅ Link berhasil disalin!');
                 }}
                 className="px-8 py-4 bg-green-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 text-base md:text-lg"
@@ -232,7 +232,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button 
                 onClick={() => {
-                  const text = `Tool gratis untuk strategi cuti cerdas!\n\nBisa tau kapan waktu terbaik ambil cuti biar dapet long weekend maksimal.\n\nCek: ${globalThis.location?.href || 'https://cuti-worth-it.vercel.app'}`;
+                  const text = `Tool gratis untuk strategi cuti cerdas!\n\nBisa tau kapan waktu terbaik ambil cuti biar dapet long weekend maksimal.\n\nCek: ${globalThis.location?.href || 'https://cuti.gagitualdi.online'}`;
                   globalThis.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
                 }}
                 className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95"

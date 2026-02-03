@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://cuti-worth-it.vercel.app/sitemap.xml
+Sitemap: https://cuti.gagitualdi.online/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

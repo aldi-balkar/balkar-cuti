@@ -51,7 +51,7 @@ function generateWhatsAppText(
 "${recommendation.quote}"
 
 Mau cek tanggal terbaik buat ambil cuti? 
-Coba tool ini: ${globalThis.location?.origin || 'https://cuti-worth-it.vercel.app'}`;
+Coba tool ini: ${globalThis.location?.origin || 'https://cuti.gagitualdi.online'}`;
 }
 
 export default function LeaveRecommendationCard({
