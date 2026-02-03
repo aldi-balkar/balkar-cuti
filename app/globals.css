@@ -3,12 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #fff;
-  --foreground: #1a1a1a;
-  --primary: #1e3a8a;
-  --primary-hover: #1e40af;
-  --secondary: #3b82f6;
-  --accent: #06b6d4;
+  --background: #ffffff;
+  --foreground: #1a1f36;
+  --primary: #1e3a5f;
+  --primary-hover: #2d5a8f;
+  --secondary: #4a90e2;
+  --accent: #e8f0fe;
+  --border: #e5e7eb;
+  --navy: #0f172a;
+  --navy-light: #1e293b;
 }
 
 body {
@@ -22,38 +25,6 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-  
-  .gradient-text {
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  /* Animation utilities */
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-  
-  @keyframes blob {
-    0%, 100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
   }
 }
 

@@ -3,17 +3,18 @@
 import { useState, useMemo, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
+import { FaInfoCircle, FaShare, FaCalendarCheck, FaLightbulb } from 'react-icons/fa';
 import LoadingScreen from '@/components/LoadingScreen';
 import { getHolidaysByYear } from '@/lib/holidays';
 import { calculateOptimalLeave } from '@/lib/calculateLeave';
 
 // Dynamic imports untuk optimasi
 const MonthSelector = dynamic(() => import('@/components/MonthSelector'), {
-  loading: () => <div className="h-32 bg-blue-100 animate-pulse rounded-2xl"></div>,
+  loading: () => <div className="h-32 bg-gray-100 animate-pulse rounded-xl"></div>,
 });
 
 const LeaveRecommendationCard = dynamic(() => import('@/components/LeaveRecommendationCard'), {
-  loading: () => <div className="h-64 bg-blue-100 animate-pulse rounded-2xl"></div>,
+  loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-xl"></div>,
 });
 
 const MONTHS = [
@@ -24,7 +25,8 @@ const MONTHS = [
 export default function Home() {
   const currentDate = new Date();
   const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear());
-  const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth());
+  const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth() + 1);
+  const [isLoading, setIsLoading] = useState(false);
   
   // Memoized calculation
   const recommendations = useMemo(() => {
@@ -33,6 +35,14 @@ export default function Home() {
   }, [selectedYear, selectedMonth]);
   
   const monthName = MONTHS[selectedMonth];
+  
+  // Format date with day name
+  const formatDateWithDay = (date: Date) => {
+    const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    const dayName = days[date.getDay()];
+    const dateStr = date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    return `${dayName}, ${dateStr}`;
+  };
   
   // JSON-LD Structured Data untuk SEO
   const jsonLd = {
@@ -61,6 +71,17 @@ export default function Home() {
     },
   };
   
+  const handleShare = () => {
+    const shareText = recommendations.length > 0
+      ? `Rekomendasi Cuti ${monthName} ${selectedYear}:\n\n${recommendations.map((rec, i) => 
+          `${i + 1}. Ambil cuti ${rec.leaveDates.length} hari → dapat ${rec.totalOffDays} hari libur!`
+        ).join('\n')}\n\nCek strategi cutimu di:`
+      : 'Cek strategi cuti terbaikmu di:';
+    
+    const url = globalThis.location?.href || 'https://cuti.gagitualdi.online';
+    globalThis.open(`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${url}`)}`, '_blank');
+  };
+  
   return (
     <>
       {/* JSON-LD for SEO */}
@@ -70,51 +91,81 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <LoadingScreen />
-      <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-500 relative overflow-hidden">
-      {/* Animated blobs background */}
-      <div className="absolute top-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-0 left-1/2 w-64 h-64 md:w-96 md:h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      <main className="min-h-screen bg-white">
       
-      {/* Header */}
-      <div className="relative bg-gradient-to-r from-blue-800 via-blue-600 to-cyan-500 text-white py-10 md:py-16 px-4 shadow-2xl">
-        <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6">
-          <div className="inline-block">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold drop-shadow-2xl leading-tight">
-              Strategi Cuti Cerdas
-            </h1>
+      {/* Header - Navy Professional */}
+      <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white py-16 md:py-24 px-4">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
+          <div className="inline-flex items-center gap-3 bg-blue-800/30 px-6 py-2 rounded-full border border-blue-500/30 mb-4">
+            <FaCalendarCheck className="text-blue-300" />
+            <span className="text-sm font-medium text-blue-100">Planning Liburan yang Tepat</span>
           </div>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold opacity-95 max-w-3xl mx-auto">
-            Maksimalkan hari liburmu dengan planning yang tepat
-          </p>
-          <p className="text-sm sm:text-base md:text-lg font-normal opacity-90 max-w-2xl mx-auto">
-            Cari tahu kapan waktu terbaik ambil cuti biar dapat long weekend lebih panjang
+          
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            Strategi Cuti Cerdas
+          </h1>
+          
+          <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto font-light">
+            Maksimalkan hari libur dengan planning yang tepat berdasarkan kalender libur nasional Indonesia
           </p>
           
-          {/* Hero CTA */}
-          <div className="pt-4 md:pt-6 space-y-3">
-            <div className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full inline-block font-semibold text-sm md:text-base border-2 border-white/40">
-              Gratis & Langsung Pakai
+          {/* Trust Badge */}
+          <div className="flex flex-wrap items-center justify-center gap-6 pt-6 text-sm text-blue-200">
+            <div className="flex items-center gap-2">
+              <FaCalendarCheck className="text-green-400" />
+              <span>10,000+ Pengguna</span>
             </div>
-            <p className="text-sm md:text-base font-medium">
-              Sudah dipercaya oleh <span className="text-yellow-300 text-lg md:text-xl font-bold">10,000+</span> pegawai kantoran
-            </p>
+            <div className="flex items-center gap-2">
+              <FaLightbulb className="text-yellow-400" />
+              <span>100% Gratis</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaInfoCircle className="text-blue-400" />
+              <span>Data Resmi</span>
+            </div>
           </div>
         </div>
       </div>
       
       {/* Main Content */}
-      <div className="relative max-w-4xl mx-auto px-4 py-6 md:py-8 space-y-6 md:space-y-8">
+      <div className="max-w-5xl mx-auto px-4 py-10 md:py-16 space-y-10">
+        
+        {/* First Time User Guide */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 border-l-4 border-blue-600 shadow-sm">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+              <FaInfoCircle className="text-white text-lg" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Cara Menggunakan</h3>
+              <ol className="space-y-2 text-sm md:text-base text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-blue-600 flex-shrink-0">1.</span>
+                  <span>Pilih <strong>tahun</strong> dan <strong>bulan</strong> yang ingin Anda cek</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-blue-600 flex-shrink-0">2.</span>
+                  <span>Lihat rekomendasi tanggal cuti yang paling optimal</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-blue-600 flex-shrink-0">3.</span>
+                  <span>Bagikan ke rekan kerja untuk planning bersama</span>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        
         {/* Month Selector */}
-        <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-6 md:p-8 border border-blue-200">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 md:mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 text-center">
-              Pilih Bulan yang Ingin Dicek
+        <div className="bg-white rounded-xl shadow-lg p-6 md:p-10 border border-gray-200">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              Pilih Periode
             </h2>
+            <p className="text-gray-600">Pilih tahun dan bulan untuk melihat rekomendasi cuti</p>
           </div>
           <div className="flex justify-center">
-            <Suspense fallback={<div className="h-24 bg-blue-50 animate-pulse rounded-xl w-full max-w-md"></div>}>
+            <Suspense fallback={<div className="h-24 bg-gray-100 animate-pulse rounded-xl w-full max-w-2xl"></div>}>
               <MonthSelector
                 selectedYear={selectedYear}
                 selectedMonth={selectedMonth}
@@ -125,46 +176,120 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Results */}
-        <div className="space-y-5 md:space-y-6">
-          <div className="text-center bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl border border-blue-200">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3">
-              Hasil untuk {monthName} {selectedYear}
-            </h2>
-            {recommendations.length > 0 ? (
-              <p className="text-base sm:text-lg md:text-xl font-medium text-blue-700">
-                Ditemukan {recommendations.length} rekomendasi cuti strategis
-              </p>
-            ) : (
-              <p className="text-base sm:text-lg md:text-xl font-medium text-gray-600">
-                Belum ada rekomendasi cuti strategis untuk bulan ini
-              </p>
-            )}
-          </div>
-          
-          {recommendations.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-1">
-              <Suspense fallback={<div className="h-64 bg-blue-100 animate-pulse rounded-2xl"></div>}>
-                {recommendations.map((rec) => (
-                  <LeaveRecommendationCard
-                    key={rec.leaveDates.map(d => d.toISOString()).join('-')}
-                    recommendation={rec}
-                    monthName={monthName}
-                  />
+        {/* Results Section */}
+        <div className="space-y-6">
+          {isLoading ? (
+            <LoadingScreen />
+          ) : recommendations.length > 0 ? (
+            <div className="space-y-6">
+              <div className="text-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                  Rekomendasi Cuti Terbaik
+                </h2>
+                <p className="text-gray-600">
+                  Berikut strategi cuti paling efisien untuk {monthName} {selectedYear}
+                </p>
+              </div>
+              
+              {/* Single Combined Card */}
+              <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                {recommendations.map((rec, index) => (
+                  <div key={index} className={`p-6 md:p-8 ${index !== recommendations.length - 1 ? 'border-b border-gray-200' : ''}`}>
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
+                        <span className="text-white text-xl font-bold">{index + 1}</span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">
+                          Strategi #{index + 1}
+                        </h3>
+                        <p className="text-gray-600">{rec.reason}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* Dates Section */}
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-3">
+                          <FaCalendarCheck className="text-blue-600" />
+                          <span>Ambil Cuti Pada:</span>
+                        </div>
+                        <div className="space-y-2">
+                          {rec.leaveDates.map((date, idx) => (
+                            <div key={idx} className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg border border-blue-100">
+                              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                              <span className="font-medium text-gray-900">{formatDateWithDay(date)}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Summary Section */}
+                      <div className="space-y-4">
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 border border-green-200">
+                          <div className="flex items-center gap-3 mb-2">
+                            <FaLightbulb className="text-green-600 text-xl" />
+                            <span className="font-bold text-gray-900">Total Benefit</span>
+                          </div>
+                          <p className="text-3xl font-bold text-green-700">{rec.totalOffDays} Hari</p>
+                          <p className="text-sm text-gray-600 mt-1">Libur berturut-turut</p>
+                        </div>
+                        
+                        <div className="flex gap-2 flex-wrap">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">
+                            <FaCalendarCheck />
+                            {rec.leaveDates.length} hari cuti
+                          </span>
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">
+                            <FaLightbulb />
+                            Efisiensi tinggi
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Quote Section */}
+                    {rec.quote && (
+                      <div className="mt-6 pt-6 border-t border-gray-200">
+                        <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg p-4 border-l-4 border-blue-600">
+                          <p className="text-gray-700 italic">"{rec.quote}"</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 ))}
-              </Suspense>
+                
+                {/* Share Section */}
+                <div className="bg-gradient-to-r from-slate-900 to-blue-900 p-6 md:p-8">
+                  <div className="text-center space-y-4">
+                    <div className="flex justify-center">
+                      <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                        <FaShare className="text-white text-xl" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Bagikan Strategi Ini</h3>
+                      <p className="text-blue-200">Bantu rekan kerja merencanakan liburan bersama</p>
+                    </div>
+                    <button
+                      onClick={handleShare}
+                      className="inline-flex items-center gap-3 bg-white text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                    >
+                      <FaShare />
+                      Bagikan via WhatsApp
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           ) : (
-            <div className="bg-blue-50 rounded-2xl md:rounded-3xl shadow-xl p-8 md:p-12 text-center border border-blue-200">
-              <div className="text-6xl md:text-7xl mb-6">🤔</div>
-              <p className="text-xl md:text-2xl font-bold text-gray-800 mb-3">
-                Belum Ada Rekomendasi Khusus
-              </p>
-              <p className="text-base md:text-lg text-gray-600 mb-4">
-                Bulan ini tidak ada kombinasi hari libur yang strategis untuk long weekend.
-              </p>
-              <p className="text-sm md:text-base text-blue-700 font-medium">
-                Coba cek bulan lain yang memiliki hari libur nasional
+            <div className="bg-white rounded-xl shadow-lg p-12 text-center border border-gray-200">
+              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FaCalendarCheck className="text-gray-400 text-3xl" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Pilih Periode</h3>
+              <p className="text-gray-600 max-w-md mx-auto">
+                Silakan pilih tahun dan bulan di atas untuk melihat rekomendasi strategi cuti yang optimal
               </p>
             </div>
           )}
@@ -205,71 +330,39 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Info Footer */}
-        <div className="bg-blue-50 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-lg border border-blue-200">
-          <div className="text-center space-y-3">
-            <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
-              💡 Tips: Ambil cuti di hari Jumat atau Senin untuk dapat long weekend otomatis!
-            </p>
-            <p className="text-sm sm:text-base text-gray-600">
-              Data berdasarkan kalender libur nasional dan cuti bersama Indonesia {selectedYear}
-            </p>
+        {/* Info Tips Section */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 border border-blue-200">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+              <FaLightbulb className="text-white text-lg" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Tips Cuti Strategis</h3>
+              <p className="text-gray-700 mb-2">
+                Ambil cuti di hari <strong>Jumat</strong> atau <strong>Senin</strong> untuk mendapatkan long weekend otomatis!
+              </p>
+              <p className="text-sm text-gray-600">
+                Data berdasarkan kalender libur nasional dan cuti bersama Indonesia {selectedYear}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      
+
       {/* Footer */}
-      <footer className="relative bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-t-2 border-gray-600 py-8 md:py-10 mt-10 md:mt-12">
-        <div className="max-w-4xl mx-auto px-4 space-y-6">
-          {/* Footer CTA */}
-          <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-white/10">
-            <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
-              Tool Ini Bermanfaat?
-            </p>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-5 max-w-2xl mx-auto">
-              Bantu teman-teman kamu juga dengan membagikan tool ini
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button 
-                onClick={() => {
-                  const text = `Tool gratis untuk strategi cuti cerdas!\n\nBisa tau kapan waktu terbaik ambil cuti biar dapet long weekend maksimal.\n\nCek: ${globalThis.location?.href || 'https://cuti.gagitualdi.online'}`;
-                  globalThis.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                }}
-                className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95"
-              >
-                📱 Bagikan ke Rekan Kerja
-              </button>
-            </div>
+      <footer className="bg-gradient-to-r from-slate-900 to-blue-900 text-white mt-16 md:mt-20 py-10 md:py-12">
+        <div className="max-w-5xl mx-auto px-4 text-center space-y-4">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <FaCalendarCheck className="text-2xl text-blue-300" />
+            <h3 className="text-2xl font-bold">Strategi Cuti Cerdas</h3>
           </div>
-          
-          {/* Main Footer Content */}
-          <div className="text-center text-gray-300 space-y-4">
-            <div className="space-y-2">
-              <p className="text-base sm:text-lg font-semibold">
-                Strategi Cuti Cerdas
-              </p>
-              <p className="text-sm sm:text-base">
-                Maksimalkan hari liburmu dengan planning yang tepat
-              </p>
-            </div>
-            
-            {/* Credit Section */}
-            <div className="pt-4 border-t border-gray-600">
-              <p className="text-sm sm:text-base text-gray-400 mb-2">
-                Dibuat dengan ❤️ oleh
-              </p>
-              <a 
-                href="https://gagitualdi.online" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block text-lg sm:text-xl font-bold text-white hover:text-blue-400 transition-colors"
-              >
-                Team GagituAldi
-              </a>
-              <p className="text-xs sm:text-sm text-gray-500 mt-3">
-                © 2026 Strategi Cuti Cerdas · Semua hak dilindungi
-              </p>
-            </div>
+          <p className="text-blue-200 max-w-2xl mx-auto">
+            Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat berdasarkan libur nasional Indonesia.
+          </p>
+          <div className="border-t border-blue-700 my-6"></div>
+          <div className="text-blue-300 text-sm">
+            <p>© {new Date().getFullYear()} Dibuat dengan ❤️ oleh <a href="https://gagitualdi.online" target="_blank" rel="noopener noreferrer" className="font-bold hover:text-white transition-colors underline">Team GagituAldi</a></p>
+            <p className="mt-2">Gratis & Open Source • Data Resmi Pemerintah Indonesia</p>
           </div>
         </div>
       </footer>
