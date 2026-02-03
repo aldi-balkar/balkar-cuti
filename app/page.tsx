@@ -94,33 +94,33 @@ export default function Home() {
       <main className="min-h-screen bg-white">
       
       {/* Header - Navy Professional */}
-      <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white py-16 md:py-24 px-4">
-        <div className="max-w-5xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-3 bg-blue-800/30 px-6 py-2.5 md:py-3 rounded-full border border-blue-500/30 mb-4">
-            <FaCalendarCheck className="text-blue-300 text-base md:text-lg" />
-            <span className="text-sm md:text-base font-medium text-blue-100">Planning Liburan yang Tepat</span>
+      <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white py-20 md:py-32 px-4">
+        <div className="max-w-6xl mx-auto text-center space-y-8">
+          <div className="inline-flex items-center gap-3 md:gap-4 bg-blue-800/30 px-8 py-3 md:py-4 rounded-full border border-blue-500/30 mb-6">
+            <FaCalendarCheck className="text-blue-300 text-lg md:text-xl" />
+            <span className="text-base md:text-lg font-medium text-blue-100">Planning Liburan yang Tepat</span>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
             Planning Cuti
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto font-light">
+          <p className="text-xl sm:text-2xl md:text-3xl text-blue-100 max-w-4xl mx-auto font-light leading-relaxed">
             Maksimalkan hari libur dengan planning yang tepat berdasarkan kalender libur nasional Indonesia
           </p>
           
           {/* Trust Badge */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 pt-6 text-sm md:text-base text-blue-200">
-            <div className="flex items-center gap-2">
-              <FaCalendarCheck className="text-green-400 text-base md:text-lg" />
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 pt-8 text-base md:text-lg text-blue-200">
+            <div className="flex items-center gap-2 md:gap-3">
+              <FaCalendarCheck className="text-green-400 text-xl md:text-2xl" />
               <span>10,000+ Pengguna</span>
             </div>
-            <div className="flex items-center gap-2">
-              <FaLightbulb className="text-yellow-400 text-base md:text-lg" />
+            <div className="flex items-center gap-2 md:gap-3">
+              <FaLightbulb className="text-yellow-400 text-xl md:text-2xl" />
               <span>100% Gratis</span>
             </div>
-            <div className="flex items-center gap-2">
-              <FaInfoCircle className="text-blue-400 text-base md:text-lg" />
+            <div className="flex items-center gap-2 md:gap-3">
+              <FaInfoCircle className="text-blue-400 text-xl md:text-2xl" />
               <span>Data Resmi</span>
             </div>
           </div>
@@ -128,17 +128,17 @@ export default function Home() {
       </div>
       
       {/* Main Content */}
-      <div className="max-w-5xl mx-auto px-4 py-10 md:py-16 space-y-10">
+      <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 space-y-12 md:space-y-16">
         
         {/* First Time User Guide */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-10 border-l-4 border-blue-600 shadow-sm">
-          <div className="flex items-start gap-4 md:gap-5">
-            <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center">
-              <FaInfoCircle className="text-white text-lg md:text-xl" />
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl md:rounded-2xl p-8 md:p-12 border-l-4 md:border-l-[6px] border-blue-600 shadow-sm">
+          <div className="flex items-start gap-5 md:gap-6">
+            <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center">
+              <FaInfoCircle className="text-white text-xl md:text-2xl" />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Cara Menggunakan</h3>
-              <ol className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-700">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-5">Cara Menggunakan</h3>
+              <ol className="space-y-3 md:space-y-4 text-base md:text-lg text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="font-bold text-blue-600 flex-shrink-0">1.</span>
                   <span>Pilih <strong>tahun</strong> dan <strong>bulan</strong> yang ingin Anda cek</span>
@@ -157,12 +157,12 @@ export default function Home() {
         </div>
         
         {/* Month Selector */}
-        <div className="bg-white rounded-xl shadow-lg p-6 md:p-12 border border-gray-200">
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-3">
+        <div className="bg-white rounded-xl md:rounded-2xl shadow-xl p-8 md:p-16 border border-gray-200">
+          <div className="text-center mb-10 md:mb-14">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
               Pilih Periode
             </h2>
-            <p className="text-base md:text-lg text-gray-600">Pilih tahun dan bulan untuk melihat rekomendasi cuti</p>
+            <p className="text-lg md:text-xl text-gray-600">Pilih tahun dan bulan untuk melihat rekomendasi cuti</p>
           </div>
           <div className="flex justify-center">
             <Suspense fallback={<div className="h-24 bg-gray-100 animate-pulse rounded-xl w-full max-w-2xl"></div>}>
@@ -177,71 +177,71 @@ export default function Home() {
         </div>
         
         {/* Results Section */}
-        <div className="space-y-6">
+        <div className="space-y-8 md:space-y-10">
           {isLoading ? (
             <LoadingScreen />
           ) : recommendations.length > 0 ? (
-            <div className="space-y-6">
+            <div className="space-y-8 md:space-y-10">
               <div className="text-center">
-                <h2 className="text-xl md:text-3xl font-semibold text-gray-900 mb-2 md:mb-3">
+                <h2 className="text-2xl md:text-4xl font-semibold text-gray-900 mb-3 md:mb-4">
                   Rekomendasi Cuti Terbaik
                 </h2>
-                <p className="text-sm md:text-lg text-gray-600">
+                <p className="text-base md:text-xl text-gray-600">
                   Berikut pilihan cuti paling efisien untuk {monthName} {selectedYear}
                 </p>
               </div>
               
               {/* Single Combined Card */}
-              <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+              <div className="bg-white rounded-xl md:rounded-2xl shadow-xl border-2 border-gray-200 overflow-hidden">
                 {recommendations.map((rec, index) => (
-                  <div key={index} className={`p-4 md:p-8 ${index !== recommendations.length - 1 ? 'border-b border-gray-200' : ''}`}>
-                    <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
-                      <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg md:rounded-xl flex items-center justify-center shadow-md">
-                        <span className="text-white text-lg md:text-2xl font-semibold">{index + 1}</span>
+                  <div key={index} className={`p-6 md:p-10 ${index !== recommendations.length - 1 ? 'border-b-2 border-gray-200' : ''}`}>
+                    <div className="flex items-start gap-4 md:gap-5 mb-6 md:mb-8">
+                      <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
+                        <span className="text-white text-xl md:text-3xl font-semibold">{index + 1}</span>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-base md:text-xl font-semibold text-gray-900 mb-1">
+                        <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2">
                           Opsi #{index + 1}
                         </h3>
-                        <p className="text-sm md:text-base text-gray-600">{rec.reason}</p>
+                        <p className="text-base md:text-lg text-gray-600">{rec.reason}</p>
                       </div>
                     </div>
                     
-                    <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+                    <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                       {/* Dates Section */}
-                      <div className="space-y-2 md:space-y-3">
-                        <div className="flex items-center gap-2 text-xs md:text-base font-medium text-gray-700 mb-2 md:mb-3">
-                          <FaCalendarCheck className="text-blue-600 text-sm md:text-base" />
+                      <div className="space-y-3 md:space-y-4">
+                        <div className="flex items-center gap-2 md:gap-3 text-sm md:text-lg font-medium text-gray-700 mb-3 md:mb-4">
+                          <FaCalendarCheck className="text-blue-600 text-base md:text-xl" />
                           <span>Ambil Cuti Pada:</span>
                         </div>
-                        <div className="space-y-2">
+                        <div className="space-y-2 md:space-y-3">
                           {rec.leaveDates.map((date, idx) => (
-                            <div key={idx} className="flex items-center gap-2 md:gap-3 bg-blue-50 px-3 md:px-5 py-2 md:py-3.5 rounded-lg border border-blue-100">
-                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-600 rounded-full"></div>
-                              <span className="text-sm md:text-base text-gray-900">{formatDateWithDay(date)}</span>
+                            <div key={idx} className="flex items-center gap-3 md:gap-4 bg-blue-50 px-4 md:px-6 py-3 md:py-4 rounded-lg md:rounded-xl border border-blue-100">
+                              <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-blue-600 rounded-full"></div>
+                              <span className="text-base md:text-lg text-gray-900">{formatDateWithDay(date)}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                       
                       {/* Summary Section */}
-                      <div className="space-y-3 md:space-y-4">
-                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg md:rounded-xl p-4 md:p-6 border border-green-200">
-                          <div className="flex items-center gap-2 md:gap-3 mb-2">
-                            <FaLightbulb className="text-green-600 text-base md:text-2xl" />
-                            <span className="text-sm md:text-lg font-semibold text-gray-900">Total Benefit</span>
+                      <div className="space-y-4 md:space-y-5">
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl md:rounded-2xl p-6 md:p-8 border-2 border-green-200">
+                          <div className="flex items-center gap-3 md:gap-4 mb-3">
+                            <FaLightbulb className="text-green-600 text-xl md:text-3xl" />
+                            <span className="text-base md:text-xl font-semibold text-gray-900">Total Benefit</span>
                           </div>
-                          <p className="text-2xl md:text-4xl font-bold text-green-700">{rec.totalOffDays} Hari</p>
-                          <p className="text-xs md:text-sm text-gray-600 mt-1">Libur berturut-turut</p>
+                          <p className="text-3xl md:text-5xl font-bold text-green-700">{rec.totalOffDays} Hari</p>
+                          <p className="text-sm md:text-base text-gray-600 mt-2">Libur berturut-turut</p>
                         </div>
                         
-                        <div className="flex gap-2 flex-wrap">
-                          <span className="inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-1.5 md:py-2.5 bg-blue-100 text-blue-800 rounded-lg text-xs md:text-base font-medium">
-                            <FaCalendarCheck className="text-xs md:text-base" />
+                        <div className="flex gap-2 md:gap-3 flex-wrap">
+                          <span className="inline-flex items-center gap-2 md:gap-2.5 px-4 md:px-6 py-2 md:py-3 bg-blue-100 text-blue-800 rounded-lg md:rounded-xl text-sm md:text-base font-medium">
+                            <FaCalendarCheck className="text-sm md:text-lg" />
                             {rec.leaveDates.length} hari cuti
                           </span>
-                          <span className="inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-1.5 md:py-2.5 bg-purple-100 text-purple-800 rounded-lg text-xs md:text-base font-medium">
-                            <FaLightbulb className="text-xs md:text-base" />
+                          <span className="inline-flex items-center gap-2 md:gap-2.5 px-4 md:px-6 py-2 md:py-3 bg-purple-100 text-purple-800 rounded-lg md:rounded-xl text-sm md:text-base font-medium">
+                            <FaLightbulb className="text-sm md:text-lg" />
                             Efisiensi tinggi
                           </span>
                         </div>
@@ -250,9 +250,9 @@ export default function Home() {
                     
                     {/* Quote Section */}
                     {rec.quote && (
-                      <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200">
-                        <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg p-3 md:p-5 border-l-4 border-blue-600">
-                          <p className="text-xs md:text-base text-gray-700 italic">"{rec.quote}"</p>
+                      <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t-2 border-gray-200">
+                        <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg md:rounded-xl p-4 md:p-6 border-l-4 md:border-l-[6px] border-blue-600">
+                          <p className="text-sm md:text-lg text-gray-700 italic leading-relaxed">"{rec.quote}"</p>
                         </div>
                       </div>
                     )}
@@ -260,22 +260,22 @@ export default function Home() {
                 ))}
                 
                 {/* Share Section */}
-                <div className="bg-gradient-to-r from-slate-900 to-blue-900 p-4 md:p-8">
-                  <div className="text-center space-y-3 md:space-y-4">
+                <div className="bg-gradient-to-r from-slate-900 to-blue-900 p-6 md:p-10">
+                  <div className="text-center space-y-4 md:space-y-6">
                     <div className="flex justify-center">
-                      <div className="w-10 h-10 md:w-14 md:h-14 bg-white/10 rounded-full flex items-center justify-center">
-                        <FaShare className="text-white text-base md:text-2xl" />
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 rounded-full flex items-center justify-center">
+                        <FaShare className="text-white text-xl md:text-3xl" />
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-base md:text-2xl font-semibold text-white mb-1 md:mb-2">Bagikan Strategi Ini</h3>
-                      <p className="text-xs md:text-base text-blue-200">Bantu rekan kerja merencanakan liburan bersama</p>
+                      <h3 className="text-lg md:text-3xl font-semibold text-white mb-2 md:mb-3">Bagikan Strategi Ini</h3>
+                      <p className="text-sm md:text-lg text-blue-200">Bantu rekan kerja merencanakan liburan bersama</p>
                     </div>
                     <button
                       onClick={handleShare}
-                      className="inline-flex items-center gap-2 md:gap-3 bg-white text-gray-900 px-4 md:px-8 py-2 md:py-4 rounded-lg md:rounded-xl text-sm md:text-lg font-semibold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 md:gap-3 bg-white text-gray-900 px-6 md:px-10 py-3 md:py-5 rounded-xl md:rounded-2xl text-base md:text-xl font-semibold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
                     >
-                      <FaShare className="text-sm md:text-base" />
+                      <FaShare className="text-base md:text-lg" />
                       Bagikan via WhatsApp
                     </button>
                   </div>
@@ -283,12 +283,12 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <div className="bg-white rounded-xl shadow-lg p-8 md:p-16 text-center border border-gray-200">
-              <div className="w-16 h-16 md:w-24 md:h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <FaCalendarCheck className="text-gray-400 text-2xl md:text-4xl" />
+            <div className="bg-white rounded-xl md:rounded-2xl shadow-xl p-12 md:p-20 text-center border-2 border-gray-200">
+              <div className="w-20 h-20 md:w-28 md:h-28 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8">
+                <FaCalendarCheck className="text-gray-400 text-3xl md:text-5xl" />
               </div>
-              <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Pilih Periode</h3>
-              <p className="text-sm md:text-lg text-gray-600 max-w-md mx-auto">
+              <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Pilih Periode</h3>
+              <p className="text-base md:text-xl text-gray-600 max-w-xl mx-auto leading-relaxed">
                 Silakan pilih tahun dan bulan di atas untuk melihat rekomendasi strategi cuti yang optimal
               </p>
             </div>
@@ -296,24 +296,24 @@ export default function Home() {
         </div>
         
         {/* CTA Section - Viral Sharing */}
-        <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl md:rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl md:rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="relative text-center space-y-4 md:space-y-6">
-            <div className="text-4xl md:text-6xl">📤</div>
-            <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
+          <div className="relative text-center space-y-6 md:space-y-8">
+            <div className="text-5xl md:text-7xl">📤</div>
+            <h3 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
               Bagikan ke Rekan Kerja
             </h3>
-            <p className="text-base sm:text-lg md:text-xl font-medium text-white/95 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl font-medium text-white/95 max-w-3xl mx-auto leading-relaxed">
               Kalau kamu merasa tool ini berguna, share juga ke teman-teman kantormu biar bisa planning cuti bareng!
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center pt-3 md:pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center pt-4 md:pt-6">
               <button 
                 onClick={() => {
                   const text = `Nemu tool keren buat strategi cuti! Bisa tau kapan waktu terbaik ambil cuti biar dapet long weekend panjang.\n\nCek di: ${globalThis.location?.href || 'https://cuti.gagitualdi.online'}`;
                   globalThis.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
                 }}
-                className="px-6 md:px-10 py-3 md:py-5 bg-white text-green-600 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 text-base md:text-xl"
+                className="px-8 md:px-12 py-4 md:py-6 bg-white text-green-600 font-bold rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 text-lg md:text-2xl"
               >
                 📱 Share via WhatsApp
               </button>
@@ -322,7 +322,7 @@ export default function Home() {
                   navigator.clipboard.writeText(globalThis.location?.href || 'https://cuti.gagitualdi.online');
                   alert('✅ Link berhasil disalin!');
                 }}
-                className="px-6 md:px-10 py-3 md:py-5 bg-green-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 text-base md:text-xl"
+                className="px-8 md:px-12 py-4 md:py-6 bg-green-700 text-white font-bold rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 text-lg md:text-2xl"
               >
                 📋 Salin Link
               </button>
@@ -331,17 +331,17 @@ export default function Home() {
         </div>
 
         {/* Info Tips Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-10 border border-blue-200">
-          <div className="flex items-start gap-4 md:gap-5">
-            <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center">
-              <FaLightbulb className="text-white text-lg md:text-xl" />
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl md:rounded-2xl p-8 md:p-12 border-2 border-blue-200">
+          <div className="flex items-start gap-5 md:gap-6">
+            <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center">
+              <FaLightbulb className="text-white text-xl md:text-2xl" />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Tips Cuti Strategis</h3>
-              <p className="text-sm md:text-base text-gray-700 mb-2">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Tips Cuti Strategis</h3>
+              <p className="text-base md:text-lg text-gray-700 mb-3 leading-relaxed">
                 Ambil cuti di hari <strong>Jumat</strong> atau <strong>Senin</strong> untuk mendapatkan long weekend otomatis!
               </p>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className="text-sm md:text-base text-gray-600">
                 Data berdasarkan kalender libur nasional dan cuti bersama Indonesia {selectedYear}
               </p>
             </div>
@@ -350,19 +350,19 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-slate-900 to-blue-900 text-white mt-16 md:mt-20 py-10 md:py-16">
-        <div className="max-w-5xl mx-auto px-4 text-center space-y-4 md:space-y-6">
-          <div className="flex items-center justify-center gap-2 md:gap-3 mb-3">
-            <FaCalendarCheck className="text-2xl md:text-3xl text-blue-300" />
-            <h3 className="text-2xl md:text-3xl font-bold">Planning Cuti</h3>
+      <footer className="bg-gradient-to-r from-slate-900 to-blue-900 text-white mt-20 md:mt-24 py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 text-center space-y-6 md:space-y-8">
+          <div className="flex items-center justify-center gap-3 md:gap-4 mb-4">
+            <FaCalendarCheck className="text-3xl md:text-4xl text-blue-300" />
+            <h3 className="text-3xl md:text-4xl font-bold">Planning Cuti</h3>
           </div>
-          <p className="text-sm md:text-lg text-blue-200 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
             Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat berdasarkan libur nasional Indonesia.
           </p>
-          <div className="border-t border-blue-700 my-6"></div>
-          <div className="text-blue-300 text-xs md:text-sm">
+          <div className="border-t border-blue-700 my-8"></div>
+          <div className="text-blue-300 text-sm md:text-base">
             <p>© {new Date().getFullYear()} Dibuat dengan ❤️ oleh <a href="https://gagitualdi.online" target="_blank" rel="noopener noreferrer" className="font-bold hover:text-white transition-colors underline">Team GagituAldi</a></p>
-            <p className="mt-2">Gratis & Open Source • Data Resmi Pemerintah Indonesia</p>
+            <p className="mt-3">Gratis & Open Source • Data Resmi Pemerintah Indonesia</p>
           </div>
         </div>
       </footer>
