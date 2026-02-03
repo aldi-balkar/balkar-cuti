@@ -19,8 +19,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://cuti.gagitualdi.online'),
   title: {
-    default: 'Strategi Cuti Cerdas - Planning Liburan yang Tepat',
-    template: '%s | Strategi Cuti Cerdas',
+    default: 'Planning Cuti - Planning Liburan yang Tepat',
+    template: '%s | Planning Cuti',
   },
   description: 'Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat. Hemat cuti, dapat long weekend lebih panjang!',
   keywords: [
@@ -56,21 +56,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'id_ID',
     url: 'https://cuti.gagitualdi.online',
-    title: 'Strategi Cuti Cerdas - Planning Liburan yang Tepat',
+    title: 'Planning Cuti - Planning Liburan yang Tepat',
     description: 'Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat berdasarkan libur nasional Indonesia.',
-    siteName: 'Strategi Cuti Cerdas',
+    siteName: 'Planning Cuti',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Strategi Cuti Cerdas - Planning Liburan yang Tepat',
+        alt: 'Planning Cuti - Planning Liburan yang Tepat',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Strategi Cuti Cerdas - Planning Liburan yang Tepat',
+    title: 'Planning Cuti - Planning Liburan yang Tepat',
     description: 'Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat.',
     creator: '@gagitualdi',
     images: ['/opengraph-image'],

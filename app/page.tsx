@@ -48,7 +48,7 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'Strategi Cuti Cerdas',
+    name: 'Planning Cuti',
     description: 'Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat berdasarkan libur nasional Indonesia.',
     url: 'https://cuti.gagitualdi.online',
     applicationCategory: 'LifestyleApplication',
@@ -102,7 +102,7 @@ export default function Home() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            Strategi Cuti Cerdas
+            Planning Cuti
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto font-light">
@@ -354,7 +354,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4 text-center space-y-4">
           <div className="flex items-center justify-center gap-2 mb-3">
             <FaCalendarCheck className="text-2xl text-blue-300" />
-            <h3 className="text-2xl font-bold">Strategi Cuti Cerdas</h3>
+            <h3 className="text-2xl font-bold">Planning Cuti</h3>
           </div>
           <p className="text-blue-200 max-w-2xl mx-auto">
             Tool gratis untuk menemukan waktu terbaik mengambil cuti. Maksimalkan hari libur dengan planning yang tepat berdasarkan libur nasional Indonesia.
