@@ -183,65 +183,65 @@ export default function Home() {
           ) : recommendations.length > 0 ? (
             <div className="space-y-6">
               <div className="text-center">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
                   Rekomendasi Cuti Terbaik
                 </h2>
-                <p className="text-gray-600">
-                  Berikut strategi cuti paling efisien untuk {monthName} {selectedYear}
+                <p className="text-sm md:text-base text-gray-600">
+                  Berikut pilihan cuti paling efisien untuk {monthName} {selectedYear}
                 </p>
               </div>
               
               {/* Single Combined Card */}
               <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
                 {recommendations.map((rec, index) => (
-                  <div key={index} className={`p-6 md:p-8 ${index !== recommendations.length - 1 ? 'border-b border-gray-200' : ''}`}>
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
-                        <span className="text-white text-xl font-bold">{index + 1}</span>
+                  <div key={index} className={`p-4 md:p-6 ${index !== recommendations.length - 1 ? 'border-b border-gray-200' : ''}`}>
+                    <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                      <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg md:rounded-xl flex items-center justify-center shadow-md">
+                        <span className="text-white text-lg md:text-xl font-semibold">{index + 1}</span>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">
-                          Strategi #{index + 1}
+                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1">
+                          Opsi #{index + 1}
                         </h3>
-                        <p className="text-gray-600">{rec.reason}</p>
+                        <p className="text-sm md:text-base text-gray-600">{rec.reason}</p>
                       </div>
                     </div>
                     
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                       {/* Dates Section */}
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-3">
-                          <FaCalendarCheck className="text-blue-600" />
+                      <div className="space-y-2 md:space-y-3">
+                        <div className="flex items-center gap-2 text-xs md:text-sm font-medium text-gray-700 mb-2 md:mb-3">
+                          <FaCalendarCheck className="text-blue-600 text-sm" />
                           <span>Ambil Cuti Pada:</span>
                         </div>
                         <div className="space-y-2">
                           {rec.leaveDates.map((date, idx) => (
-                            <div key={idx} className="flex items-center gap-3 bg-blue-50 px-4 py-3 rounded-lg border border-blue-100">
-                              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                              <span className="font-medium text-gray-900">{formatDateWithDay(date)}</span>
+                            <div key={idx} className="flex items-center gap-2 md:gap-3 bg-blue-50 px-3 md:px-4 py-2 md:py-3 rounded-lg border border-blue-100">
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-600 rounded-full"></div>
+                              <span className="text-sm md:text-base text-gray-900">{formatDateWithDay(date)}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                       
                       {/* Summary Section */}
-                      <div className="space-y-4">
-                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 border border-green-200">
-                          <div className="flex items-center gap-3 mb-2">
-                            <FaLightbulb className="text-green-600 text-xl" />
-                            <span className="font-bold text-gray-900">Total Benefit</span>
+                      <div className="space-y-3 md:space-y-4">
+                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg md:rounded-xl p-4 md:p-5 border border-green-200">
+                          <div className="flex items-center gap-2 md:gap-3 mb-2">
+                            <FaLightbulb className="text-green-600 text-base md:text-xl" />
+                            <span className="text-sm md:text-base font-semibold text-gray-900">Total Benefit</span>
                           </div>
-                          <p className="text-3xl font-bold text-green-700">{rec.totalOffDays} Hari</p>
-                          <p className="text-sm text-gray-600 mt-1">Libur berturut-turut</p>
+                          <p className="text-2xl md:text-3xl font-bold text-green-700">{rec.totalOffDays} Hari</p>
+                          <p className="text-xs md:text-sm text-gray-600 mt-1">Libur berturut-turut</p>
                         </div>
                         
                         <div className="flex gap-2 flex-wrap">
-                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-800 rounded-lg text-sm font-medium">
-                            <FaCalendarCheck />
+                          <span className="inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-blue-100 text-blue-800 rounded-lg text-xs md:text-sm font-medium">
+                            <FaCalendarCheck className="text-xs md:text-sm" />
                             {rec.leaveDates.length} hari cuti
                           </span>
-                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-800 rounded-lg text-sm font-medium">
-                            <FaLightbulb />
+                          <span className="inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-purple-100 text-purple-800 rounded-lg text-xs md:text-sm font-medium">
+                            <FaLightbulb className="text-xs md:text-sm" />
                             Efisiensi tinggi
                           </span>
                         </div>
@@ -250,9 +250,9 @@ export default function Home() {
                     
                     {/* Quote Section */}
                     {rec.quote && (
-                      <div className="mt-6 pt-6 border-t border-gray-200">
-                        <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg p-4 border-l-4 border-blue-600">
-                          <p className="text-gray-700 italic">"{rec.quote}"</p>
+                      <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200">
+                        <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg p-3 md:p-4 border-l-4 border-blue-600">
+                          <p className="text-xs md:text-sm text-gray-700 italic">"{rec.quote}"</p>
                         </div>
                       </div>
                     )}
@@ -260,22 +260,22 @@ export default function Home() {
                 ))}
                 
                 {/* Share Section */}
-                <div className="bg-gradient-to-r from-slate-900 to-blue-900 p-6 md:p-8">
-                  <div className="text-center space-y-4">
+                <div className="bg-gradient-to-r from-slate-900 to-blue-900 p-4 md:p-6">
+                  <div className="text-center space-y-3 md:space-y-4">
                     <div className="flex justify-center">
-                      <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                        <FaShare className="text-white text-xl" />
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-full flex items-center justify-center">
+                        <FaShare className="text-white text-base md:text-xl" />
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Bagikan Strategi Ini</h3>
-                      <p className="text-blue-200">Bantu rekan kerja merencanakan liburan bersama</p>
+                      <h3 className="text-base md:text-xl font-semibold text-white mb-1 md:mb-2">Bagikan Strategi Ini</h3>
+                      <p className="text-xs md:text-sm text-blue-200">Bantu rekan kerja merencanakan liburan bersama</p>
                     </div>
                     <button
                       onClick={handleShare}
-                      className="inline-flex items-center gap-3 bg-white text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 md:gap-3 bg-white text-gray-900 px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
                     >
-                      <FaShare />
+                      <FaShare className="text-sm" />
                       Bagikan via WhatsApp
                     </button>
                   </div>
